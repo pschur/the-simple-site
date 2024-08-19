@@ -1,0 +1,36 @@
+{
+    "nav": {
+        "/": "Home",
+        "/about": "About",
+        "/contact": "Contact"
+    },
+    "pages": {
+        "/": {
+            "title": "Welcome to our website",
+            "content": [
+                {
+                    "type": "h1",
+                    "text": "Welcome to our website"
+                }
+            ]
+        },
+        "/about": {
+            "title": "About us",
+            "content": [
+                {
+                    "type": "h1",
+                    "text": "About us"
+                }
+            ]
+        },
+        "/contact": {
+            "title": "Contact us",
+            "content": [
+                {
+                    "type": "h1",
+                    "text": "Contact us"
+                }
+            ]
+        }
+    }
+}
