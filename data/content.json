@@ -6,8 +6,10 @@
     },
     "pages": {
         "/": {
+            "id": "jkashdflkjsdf",
+            "type": "article",
             "title": "Welcome to our website",
-            "content": [
+            "children": [
                 {
                     "type": "h1",
                     "text": "Welcome to our website"
@@ -15,8 +17,10 @@
             ]
         },
         "/about": {
+            "id": "jkashdflkjsdf",
+            "type": "article",
             "title": "About us",
-            "content": [
+            "children": [
                 {
                     "type": "h1",
                     "text": "About us"
@@ -24,8 +28,10 @@
             ]
         },
         "/contact": {
+            "id": "jkashdflkjsdf",
+            "type": "article",
             "title": "Contact us",
-            "content": [
+            "children": [
                 {
                     "type": "h1",
                     "text": "Contact us"
