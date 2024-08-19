@@ -9,7 +9,16 @@ class App {
     }
 
     data() {
-        return fetch(this.data_url).then(response => response.json());
+        if (localStorage.getItem('data')) {
+            return Promise.resolve(JSON.parse(localStorage.getItem('data')));
+        } else {
+            return fetch(this.data_url)
+                .then(response => response.json())
+                .then(data => {
+                    localStorage.setItem('data', JSON.stringify(data));
+                    return data;
+                });
+        }
     }
 
     url(url) {
@@ -65,6 +74,8 @@ class App {
     }
 
     render_content(data) {
+        this.root_element.innerHTML = '';
+        this.render_menu(data);
         let content = data.pages[this.getHash()];
 
         if (!content) {
@@ -78,7 +89,43 @@ class App {
         document.title = page.title;
         let content = this.build_element(page);
 
-        this.root_element.innerHTML = '';
         this.root_element.appendChild(content);
+    }
+
+    render_menu(data) {
+        let menu = document.createElement('ul');
+
+        Object.keys(data.nav).forEach(url => {
+            let item = {
+                type: 'li',
+                children: [
+                    {
+                        type: 'a',
+                        text: data.nav[url],
+                        attributes: [
+                            {
+                                name: 'href',
+                                value: this.url(url)
+                            }
+                        ]
+                    }
+                ]
+            };
+
+            if (url === this.getHash()) {
+                item.children[0].attributes.push({
+                    name: 'class',
+                    value: 'active'
+                });
+            }
+
+            menu.appendChild(this.build_element(item));
+            // menu.appendChild(document.createTextNode(' | '));
+        });
+
+        let conainer = document.createElement('nav');
+        conainer.appendChild(menu);
+
+        this.root_element.appendChild(conainer);
     }
 }
