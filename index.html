@@ -8,8 +8,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    #
+    <main id="root"></main>
 
     <script src="js/app.js"></script>
+    <script>
+        const app = new App('root', '/data/content.json');
+        app.render();
+    </script>
 </body>
 </html>
