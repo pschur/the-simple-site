@@ -21,6 +21,19 @@ class App {
         }
     }
 
+    check_actuallity() {
+        fetch(this.data_url + '-md5')
+            .then(response => response.text())
+            .then(data => {
+                if (localStorage.getItem('data-md5') !== data) {
+                    localStorage.removeItem('data');
+                    localStorage.setItem('data-md5', data);
+                    this.render();
+                }
+            });
+        
+    }
+
     url(url) {
         return '#' + url;
     }
@@ -68,9 +81,7 @@ class App {
     render() {
         this.data().then(this.render_content.bind(this));
 
-        this.root_element.innerHTML = `
-            <h1>Hello World</h1>
-        `;
+        this.check_actuallity();
     }
 
     render_content(data) {

@@ -8,11 +8,15 @@
         "/": {
             "id": "jkashdflkjsdf",
             "type": "article",
-            "title": "Welcome to our website",
+            "title": "Home",
             "children": [
                 {
                     "type": "h1",
                     "text": "Welcome to our website"
+                },
+                {
+                    "type": "p",
+                    "text": "This is a simple website built with nothing than plain js."
                 }
             ]
         },
